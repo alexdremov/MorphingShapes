@@ -5,7 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "MorphingShapes",
-    products: [
+    platforms: [
+        .macOS(.v10_15), .iOS(.v14), .watchOS(.v7)
+    ], products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "MorphingShapes",
@@ -20,9 +22,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "MorphingShapes",
-            dependencies: []),
-        .testTarget(
-            name: "MorphingShapesTests",
-            dependencies: ["MorphingShapes"]),
+            dependencies: []
+        )
     ]
 )
