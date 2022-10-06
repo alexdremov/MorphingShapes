@@ -3,6 +3,7 @@
 //  Spontanea
 //
 //  Created by  Alex Dremov on 27.07.2021.
+//  Updated by  Michel Löhr on 06.10.22.
 //
 
 import SwiftUI
@@ -94,6 +95,10 @@ public struct MorphingCircle: View & Identifiable & Hashable {
     let outerSize: CGFloat
     var color: Color
     let morphingRange: CGFloat
+    ///
+    var outlineColor: Color
+    var outlineWidth: Double
+    ///
     
     var radius: CGFloat {
         outerSize / 2
@@ -101,7 +106,8 @@ public struct MorphingCircle: View & Identifiable & Hashable {
     
     public var body: some View {
         MorphingCircleShape(morph)
-            .fill(color)
+            // updated with outline
+            .fill(color, strokeBorder: outlineColor, lineWidth: outlineWidth)
             .frame(width: size, height: size, alignment: .center)
             .animation(Animation.easeInOut(duration: Double(duration + 1.0)), value: morph)
             .onAppear {
@@ -117,9 +123,11 @@ public struct MorphingCircle: View & Identifiable & Hashable {
         
     }
     
-    public init(_ size:CGFloat = 300, morphingRange: CGFloat = 30, color: Color = .red, points: Int = 4,  duration: Double = 5.0, secting: Double = 2) {
+    public init(_ size:CGFloat = 300, morphingRange: CGFloat = 30, color: Color = .red, outlineColor: Color = .clear, outlineWidth: Double = 2, points: Int = 4,  duration: Double = 5.0, secting: Double = 2) {
         self.points = points
         self.color = color
+        self.outlineColor = outlineColor
+        self.outlineWidth = outlineWidth
         self.morphingRange = morphingRange
         self.duration = duration
         self.secting = secting
@@ -138,6 +146,7 @@ public struct MorphingCircle: View & Identifiable & Hashable {
 
 struct MorphingCircle_Previews: PreviewProvider {
     static var previews: some View {
-        MorphingCircle()
+        // added support for optional outline:
+        MorphingCircle(outlineColor: .orange, outlineWidth: 10.0)
     }
 }
