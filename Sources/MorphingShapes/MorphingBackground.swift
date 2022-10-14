@@ -111,7 +111,6 @@ struct MorphingBackground: View {
     }
 }
 
-@available(macOS 11.0, *)
 struct MorphingBackground_Previews: PreviewProvider {
     static var previews: some View {
         MorphingBackground()

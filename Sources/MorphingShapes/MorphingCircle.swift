@@ -96,8 +96,8 @@ public struct MorphingCircle: View & Identifiable & Hashable {
     var color: Color
     let morphingRange: CGFloat
     ///
-    var outlineColor: Color
-    var outlineWidth: Double
+    let outlineColor: Color
+    let outlineWidth: Double
     ///
     
     var radius: CGFloat {
@@ -123,7 +123,7 @@ public struct MorphingCircle: View & Identifiable & Hashable {
         
     }
     
-    public init(_ size:CGFloat = 300, morphingRange: CGFloat = 30, color: Color = .red, outlineColor: Color = .clear, outlineWidth: Double = 2, points: Int = 4,  duration: Double = 5.0, secting: Double = 2) {
+    public init(_ size:CGFloat = 300, morphingRange: CGFloat = 30, color: Color = .red, points: Int = 4,  duration: Double = 5.0, secting: Double = 2, outlineColor: Color = .clear, outlineWidth: Double = 2) {
         self.points = points
         self.color = color
         self.outlineColor = outlineColor
@@ -146,7 +146,6 @@ public struct MorphingCircle: View & Identifiable & Hashable {
 
 struct MorphingCircle_Previews: PreviewProvider {
     static var previews: some View {
-        // added support for optional outline:
         MorphingCircle(outlineColor: .orange, outlineWidth: 10.0)
     }
 }
