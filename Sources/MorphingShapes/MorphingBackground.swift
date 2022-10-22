@@ -9,6 +9,7 @@ import SwiftUI
 import Foundation
 import Combine
 
+@available(macOS 11.0, *)
 struct MorphingBackground: View {
     let number: Int
     let outlay:(x: (left: CGFloat, right: CGFloat),
